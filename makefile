@@ -9,12 +9,14 @@ PKGCONFIG=pkg-config
 OBJ=build/main.o \
  build/FontManager.o \
  build/ClockWidget.o \
- build/WidgetManager.o
+ build/WidgetManager.o \
+ build/WeatherWidget.o
 HEADERS=src/main.hpp \
  src/FontManager.hpp \
  src/Singleton.hpp \
  src/ClockWidget.hpp \
- src/WidgetManager.hpp
+ src/WidgetManager.hpp \
+ src/WeatherWidget.hpp
 LIBS=sfml-all
 
 FLAGS=-g
