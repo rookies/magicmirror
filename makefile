@@ -8,11 +8,13 @@ PKGCONFIG=pkg-config
 
 OBJ=build/main.o \
  build/FontManager.o \
- build/ClockWidget.o
+ build/ClockWidget.o \
+ build/WidgetManager.o
 HEADERS=src/main.hpp \
  src/FontManager.hpp \
  src/Singleton.hpp \
- src/ClockWidget.hpp
+ src/ClockWidget.hpp \
+ src/WidgetManager.hpp
 LIBS=sfml-all
 
 FLAGS=-g

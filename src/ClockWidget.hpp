@@ -7,7 +7,7 @@
 class ClockWidget {
 	public:
 		ClockWidget(const Vector2f &pos, unsigned int size);
-		Text getDrawable();
+		void draw(RenderWindow* window);
 	private:
 		Text m_text;
 };

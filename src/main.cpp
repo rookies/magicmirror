@@ -9,9 +9,9 @@ int main(/*int argc, char **argv*/) {
 	*/
 	RenderWindow window(VideoMode(800,600), "Magic Mirror");
 	/*
-	 * Create widgets:
+	 * Create widget manager:
 	*/
-	ClockWidget clock(Vector2f(10,10), 50);
+	WidgetManager wManager;
 	/*
 	 * Event loop:
 	*/
@@ -27,7 +27,7 @@ int main(/*int argc, char **argv*/) {
 			}
 		}
 		window.clear();
-		window.draw(clock.getDrawable());
+		wManager.draw(&window);
 		window.display();
 	}
 	return EXIT_SUCCESS;
