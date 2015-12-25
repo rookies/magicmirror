@@ -3,7 +3,7 @@ using namespace sf;
 
 WidgetManager::WidgetManager() {
 	m_clock = new ClockWidget(Vector2f(10,10), 50);
-	m_weather = new WeatherWidget(Vector2f(10,120), 50);
+	m_weather = new WeatherWidget(Vector2f(10,120), 25);
 }
 WidgetManager::~WidgetManager() {
 	delete m_clock;

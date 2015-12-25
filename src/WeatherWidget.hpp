@@ -18,6 +18,7 @@ class WeatherWidget {
 		void draw(RenderWindow* window);
 	private:
 		Text m_icons[WEATHERWIDGET_ICONS];
+		Text m_sunTimes[2];
 		Clock m_clock;
 };
 #endif

@@ -4,12 +4,23 @@ WeatherWidget::WeatherWidget(const Vector2f &pos, unsigned int size) {
 	for (size_t i=0; i < WEATHERWIDGET_ICONS; ++i) {
 		m_icons[i].setFont(*FontManager::instance()->getFont("data/Climacons.ttf"));
 		m_icons[i].setPosition(pos);
-		m_icons[i].setCharacterSize(size);
+		m_icons[i].setCharacterSize(size*1.5);
 	}
-	m_icons[1].move(Vector2f(100,0));
-	m_icons[2].move(Vector2f(200,0));
+	m_icons[0].move(Vector2f(0,40));
+	m_icons[0].setCharacterSize(size*3);
+	m_icons[1].move(Vector2f(0,0));
+	m_icons[2].move(Vector2f(120,0));
 	m_icons[1].setString(WEATHERWIDGET_ICON_SUNRISE);
 	m_icons[2].setString(WEATHERWIDGET_ICON_SUNSET);
+	for (size_t i=0; i < 2; ++i) {
+		m_sunTimes[i].setFont(*FontManager::instance()->getFont("data/Ubuntu-R.ttf"));
+		m_sunTimes[i].setPosition(pos);
+		m_sunTimes[i].setCharacterSize(size);
+	}
+	m_sunTimes[0].move(Vector2f(35,5));
+	m_sunTimes[1].move(Vector2f(155,5));
+	m_sunTimes[0].setString("05:23");
+	m_sunTimes[1].setString("20:17");
 }
 void WeatherWidget::draw(RenderWindow* window) {
 	float t = m_clock.getElapsedTime().asSeconds();
@@ -28,5 +39,8 @@ void WeatherWidget::draw(RenderWindow* window) {
 	};
 	for (size_t i=0; i < WEATHERWIDGET_ICONS; ++i) {
 		window->draw(m_icons[i]);
+	}
+	for (size_t i=0; i < 2; ++i) {
+		window->draw(m_sunTimes[i]);
 	}
 }
