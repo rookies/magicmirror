@@ -6,8 +6,13 @@ RM=rm
 MKDIR=mkdir
 PKGCONFIG=pkg-config
 
-OBJ=build/main.o build/FontManager.o
-HEADERS=src/main.hpp src/FontManager.hpp src/Singleton.hpp
+OBJ=build/main.o \
+ build/FontManager.o \
+ build/ClockWidget.o
+HEADERS=src/main.hpp \
+ src/FontManager.hpp \
+ src/Singleton.hpp \
+ src/ClockWidget.hpp
 LIBS=sfml-all
 
 FLAGS=-g

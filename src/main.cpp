@@ -1,24 +1,17 @@
 #include "main.hpp"
+#include <stdio.h>
 using namespace std;
 using namespace sf;
 
-int main(int argc, char **argv) {
-	/*
-	 * Supress warnings: (FIXME)
-	*/
-	argc = 0;
-	argv = NULL;
+int main(/*int argc, char **argv*/) {
 	/*
 	 * Create window:
 	*/
 	RenderWindow window(VideoMode(800,600), "Magic Mirror");
-	//RenderWindow window(VideoMode::getDesktopMode(), "Magic Mirror", Style::Fullscreen);
 	/*
-	 * Load font & set text properties:
+	 * Create widgets:
 	*/
-	FontManager::instance()->getFont("data/Ubuntu-B.ttf");
-	FontManager::instance()->getFont("data/Ubuntu-B.ttf");
-	Text text("xx:xx", *FontManager::instance()->getFont("data/Ubuntu-B.ttf"), 30);
+	ClockWidget clock(Vector2f(10,10), 50);
 	/*
 	 * Event loop:
 	*/
@@ -34,7 +27,7 @@ int main(int argc, char **argv) {
 			}
 		}
 		window.clear();
-		window.draw(text);
+		window.draw(clock.getDrawable());
 		window.display();
 	}
 	return EXIT_SUCCESS;

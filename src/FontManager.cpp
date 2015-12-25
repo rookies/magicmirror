@@ -2,11 +2,11 @@
 using namespace sf;
 using namespace std;
 
-FontManager::FontManager() {
-	
-}
 FontManager::~FontManager() {
-	
+	while (_fonts.size() > 0) {
+		delete get<1>(_fonts.back());
+		_fonts.pop_back();
+	}
 }
 Font* FontManager::getFont(String name) {
 	cout << "getFont(" << name.toAnsiString() << ") called." << endl;

@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include "Singleton.hpp"
 using namespace sf;
@@ -14,7 +13,7 @@ class FontManager : public Singleton <FontManager> {
 		~FontManager();
 		Font* getFont(String name);
 	protected:
-		FontManager();
+		FontManager() { };
 	private:
 		std::vector<std::tuple<String,Font*>> _fonts;
 };
