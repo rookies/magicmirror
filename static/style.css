@@ -1,0 +1,84 @@
+/*
+ * General:
+*/
+* {
+	margin: none;
+	padding: none;
+}
+body {
+	background-color: black;
+	color: white;
+}
+/*div {
+	border: 1px solid red;
+}*/
+/*
+ * Clock Widget:
+*/
+div#clock {
+	font-size: 3em;
+	margin-left: 2%;
+	margin-top: 0;
+	float: left;
+}
+div#clock span#clockSeconds {
+	font-size: .5em;
+}
+/*
+ * Weather Widget:
+*/
+div#weather {
+	margin-left: 80%;
+	margin-top: 0;
+	float: clear;
+}
+@font-face {
+	font-family: 'ClimaconsRegular';
+	src: url('Climacons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+.climacons {
+	font-family: 'ClimaconsRegular';
+}
+span.sunIcon {
+	font-size: 2em;
+}
+span.sunTime {
+	font-size: 1.5em;
+}
+span#weatherIcon {
+	font-size: 3.5em;
+}
+span#weatherTemperature {
+	font-size: 2.5em;
+}
+span#weatherTemperatureUnit {
+	font-size: 3.5em;
+}
+/*
+ * Calendar widget:
+*/
+div#calendar {
+	margin-top: 2%;
+	margin-left: 78%;
+}
+div#calendar th {
+	padding: .1em;
+	text-align: right;
+	color: #555555;
+	font-weight: normal;
+}
+div#calendar td {
+	border-left: .15em solid white;
+	border-top: .15em solid white;
+	padding: .3em;
+	text-align: right;
+}
+div#calendar td.ia {
+	color: #777777;
+}
+div#calendar td.today {
+	background-color: white;
+	color: black;
+}
