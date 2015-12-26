@@ -1,14 +1,24 @@
+var lastUpdateDay = (new Date()).getDate();
+
 $(document).ready(function() {
 	/*
 	 * First updates:
 	*/
 	Clock_update();
 	Calendar_update();
+	Weather_updateSun();
 	/*
 	 * Interval updates:
 	*/
 	window.setInterval(Clock_update, 500);
-	window.setInterval(Calendar_update, 5000);
+	window.setInterval(function() {
+		var day = (new Date()).getDate();
+		if (lastUpdateDay !== day) {
+			Calendar_update();
+			Weather_updateSun();
+			lastUpdateDay = day;
+		};
+	}, 5000);
 });
 /*
  * Clock Widget:
@@ -18,6 +28,7 @@ function Clock_update() {
 	$("#clockHours").html(now.format("H"));
 	$("#clockMinutes").html(now.format("i"));
 	$("#clockSeconds").html(now.format("s"));
+	$("#clockDate").html(now.format("d.m.Y"));
 }
 /*
  * Calendar Widget:
@@ -55,4 +66,37 @@ function Calendar_update() {
 		};
 		++i;
 	});
+}
+/*
+ * Weather Widget:
+*/
+function Weather_updateSun() {
+	$.ajax({
+		url: "http://api.sunrise-sunset.org/json",
+		jsonp: "callback",
+		dataType: "jsonp",
+		data: {
+			lat: Config.lat,
+			lng: Config.lon
+		},
+		success: function(resp) {
+			if (resp.status === "OK") {
+				$("#weatherSunrise").html(Weather_convertTime(resp.results.sunrise));
+				$("#weatherSunset").html(Weather_convertTime(resp.results.sunset));
+			} else {
+				console.log("Error updating sunset/rise times.");
+				console.log(resp);
+			};
+		}
+	});
+}
+function Weather_convertTime(t) {
+	var tParts = t.split(":");
+	var tHour = parseInt(tParts[0]);
+	var tMinute = parseInt(tParts[1]);
+	var tParts2 = tParts[2].split(" ");
+	if (tParts2[1] === "PM") {
+		tHour += 12;
+	};
+	return sprintf("%02d:%02d", tHour, tMinute);
 }
