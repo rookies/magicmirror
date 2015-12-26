@@ -64,7 +64,7 @@ span#weatherTemperatureUnit {
 	font-size: 3.5em;
 }
 /*
- * Calendar widget:
+ * Calendar Widget:
 */
 div#calendar {
 	margin-top: 2%;
@@ -81,6 +81,7 @@ div#calendar td {
 	border-top: .15em solid white;
 	padding: .3em;
 	text-align: right;
+	font-weight: bold;
 }
 div#calendar td.ia {
 	color: #777777;
@@ -88,4 +89,13 @@ div#calendar td.ia {
 div#calendar td.today {
 	background-color: white;
 	color: black;
+}
+/*
+ * Message Widget:
+*/
+div#message {
+	width: 100%;
+	text-align: center;
+	font-size: 4em;
+	display: none;
 }

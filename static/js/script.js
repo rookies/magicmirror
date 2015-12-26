@@ -1,4 +1,7 @@
 var lastUpdateDay = (new Date()).getDate();
+var Message_running = false;
+var Message_queue = new Array();
+var Message_timeout;
 
 $(document).ready(function() {
 	/*
@@ -6,7 +9,9 @@ $(document).ready(function() {
 	*/
 	Clock_update();
 	Calendar_update();
-	Weather_updateSun();
+	//Weather_updateSun();
+	Message_show("Hallo, Robert!", 5000, false);
+	Message_show("Moin, du Null!", 5000, false);
 	/*
 	 * Interval updates:
 	*/
@@ -99,4 +104,38 @@ function Weather_convertTime(t) {
 		tHour += 12;
 	};
 	return sprintf("%02d:%02d", tHour, tMinute);
+}
+/*
+ * Message Widget:
+*/
+function Message_show(text, dur, instantly) {
+	if (Message_running && !instantly) {
+		Message_queue.push({ "text": text, "duration": dur });
+		console.log(Message_queue);
+	} else {
+		if (instantly) {
+			window.clearTimeout(Message_timeout);
+		};
+		Message_set(text, dur);
+	};
+	$("#message").html();
+}
+function Message_set(text, dur) {
+	Message_running = true;
+	$("#message").html(text);
+	$("#message").fadeIn(1000, function() {
+		Message_timeout = window.setTimeout(function() {
+			$("#message").fadeOut(1000, function() {
+				/*
+				 * Check for new message to show:
+				*/
+				if (Message_queue.length) {
+					var m = Message_queue.shift();
+					Message_set(m.text, m.duration);
+				} else {
+					Message_running = false;
+				};
+			});
+		}, dur);
+	});
 }
