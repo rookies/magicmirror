@@ -41,7 +41,7 @@ function Clock_update() {
 function Calendar_getFirstMonday(date) {
 	var res = new Date(+date);
 	while (parseInt(res.format('N')) !== 1) {
-		res = new Date(date.getTime() - 86400000);
+		res = new Date(res.getTime() - 86400000);
 	}
 	return res;
 }
